@@ -6,6 +6,16 @@ import org.junit.jupiter.api.Test
 
 class ElfLandTest{
 
+    val hierarchy = mutableMapOf(
+        "Tomten" to listOf("Glader", "Butter"),
+        "Glader" to listOf("Trötter", "Tröger", "Blyger"),
+        "Butter" to listOf("Rådjuret", "Nyckelpigan", "Haren", "Räven"),
+        "Trötter" to listOf("Skumtomten"),
+        "Skumtomten" to listOf("Dammråttan"),
+        "Räven" to listOf("Gråsuggan", "Myran"),
+        "Myran" to listOf("Bladlusen")
+    )
+
 
     var tl: ElfLand = ElfLand()
 
@@ -28,63 +38,63 @@ class ElfLandTest{
     @Test
     fun getUnderlingsBladlusenTest() {
         val list: MutableList<String> = ArrayList()
-        val underlings: List<String> = tl.getUnderlings("Bladlusen", tl.hierarchy, list)
+        val underlings: List<String> = tl.getUnderlings("Bladlusen", hierarchy, list)
         assertEquals(underlings.size, 0)
     }
 
     @Test
     fun getUnderlingsTrögerTest() {
         val list: MutableList<String> = ArrayList()
-        val underlings: List<String> = tl.getUnderlings("Tröger", tl.hierarchy, list)
+        val underlings: List<String> = tl.getUnderlings("Tröger", hierarchy, list)
         assertEquals(underlings.size, 0)
     }
 
     @Test
     fun getUnderlingsBlygerTest() {
         val list: MutableList<String> = ArrayList()
-        val underlings: List<String> = tl.getUnderlings("Blyger", tl.hierarchy, list)
+        val underlings: List<String> = tl.getUnderlings("Blyger", hierarchy, list)
         assertEquals(underlings.size, 0)
     }
 
     @Test
     fun getUnderlingsDammråttanTest() {
         val list: MutableList<String> = ArrayList()
-        val underlings: List<String> = tl.getUnderlings("Dammråttan", tl.hierarchy, list)
+        val underlings: List<String> = tl.getUnderlings("Dammråttan", hierarchy, list)
         assertEquals(underlings.size, 0)
     }
 
     @Test
     fun getUnderlingsGråsugganTest() {
         val list: MutableList<String> = ArrayList()
-        val underlings: List<String> = tl.getUnderlings("Gråsuggan", tl.hierarchy, list)
+        val underlings: List<String> = tl.getUnderlings("Gråsuggan", hierarchy, list)
         assertEquals(underlings.size, 0)
     }
 
     @Test
     fun getUnderlingsHarenTest() {
         val list: MutableList<String> = ArrayList()
-        val underlings: List<String> = tl.getUnderlings("Haren", tl.hierarchy, list)
+        val underlings: List<String> = tl.getUnderlings("Haren", hierarchy, list)
         assertEquals(underlings.size, 0)
     }
 
     @Test
     fun getUnderlingsNyckelpiganTest() {
         val list: MutableList<String> = ArrayList()
-        val underlings: List<String> = tl.getUnderlings("Nyckelpigan", tl.hierarchy, list)
+        val underlings: List<String> = tl.getUnderlings("Nyckelpigan", hierarchy, list)
         assertEquals(underlings.size, 0)
     }
 
     @Test
     fun getUnderlingsRådjuretTest() {
         val list: MutableList<String> = ArrayList()
-        val underlings: List<String> = tl.getUnderlings("Rådjuret", tl.hierarchy, list)
+        val underlings: List<String> = tl.getUnderlings("Rådjuret", hierarchy, list)
         assertEquals(underlings.size, 0)
     }
 
     @Test
     fun getUnderlingsMyranTest() {
         val list: MutableList<String> = ArrayList()
-        val underlings: MutableList<String> = tl.getUnderlings("Myran", tl.hierarchy, list)
+        val underlings: MutableList<String> = tl.getUnderlings("Myran", hierarchy, list)
         assertEquals(underlings.size, uMyran.size)
         assertFalse(underlings.retainAll(uMyran))
     }
@@ -92,7 +102,7 @@ class ElfLandTest{
     @Test
     fun getUnderlingsRävenTest() {
         val list: MutableList<String> = LinkedList()
-        val underlings: MutableList<String> = tl.getUnderlings("Räven", tl.hierarchy, list)
+        val underlings: MutableList<String> = tl.getUnderlings("Räven", hierarchy, list)
         assertEquals(underlings.size, uRäven.size)
         assertFalse(underlings.retainAll(uRäven))
     }
@@ -100,7 +110,7 @@ class ElfLandTest{
     @Test
     fun getUnderlingsSkumtomtenTest() {
         val list: MutableList<String> = LinkedList()
-        val underlings: MutableList<String> = tl.getUnderlings("Skumtomten", tl.hierarchy, list)
+        val underlings: MutableList<String> = tl.getUnderlings("Skumtomten", hierarchy, list)
         assertEquals(underlings.size, uSkumtomten.size)
         assertFalse(underlings.retainAll(uSkumtomten))
     }
@@ -108,7 +118,7 @@ class ElfLandTest{
     @Test
     fun getUnderlingsTrötterTest() {
         val list: MutableList<String> = LinkedList()
-        val underlings: MutableList<String> = tl.getUnderlings("Trötter", tl.hierarchy, list)
+        val underlings: MutableList<String> = tl.getUnderlings("Trötter", hierarchy, list)
         assertEquals(underlings.size, uTrötter.size)
         assertFalse(underlings.retainAll(uTrötter))
     }
@@ -125,7 +135,7 @@ class ElfLandTest{
     @Test
     fun getUnderlingsGladerTest() {
         val list: MutableList<String> = LinkedList()
-        val underlings: MutableList<String> = tl.getUnderlings("Glader", tl.hierarchy, list)
+        val underlings: MutableList<String> = tl.getUnderlings("Glader", hierarchy, list)
         assertEquals(underlings.size, uGlader.size)
         assertFalse(underlings.retainAll(uGlader))
     }
@@ -133,7 +143,7 @@ class ElfLandTest{
     @Test
     fun getUnderlingsTomtenTest() {
         val list: MutableList<String> = LinkedList()
-        val underlings: MutableList<String> = tl.getUnderlings("Tomten", tl.hierarchy, list)
+        val underlings: MutableList<String> = tl.getUnderlings("Tomten", hierarchy, list)
         assertEquals(underlings.size, uTomten.size)
         assertFalse(underlings.retainAll(uTomten))
     }
