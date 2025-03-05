@@ -26,5 +26,5 @@ class ElfLand{
 fun main() {
     val ef = ElfLand()
     val list: MutableList<String> = mutableListOf()
-    println(ef.getUnderlings("Tomten", ef.hierarchy, list))
+    println(ef.getUnderlings("Tröger", ef.hierarchy, list))
 }
